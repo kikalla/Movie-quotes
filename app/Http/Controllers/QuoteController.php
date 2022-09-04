@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddQuoteRequest;
 use App\Models\Movie;
 use Illuminate\Http\RedirectResponse;
 
 class QuoteController extends Controller
 {
-	public function store(Movie $movie): RedirectResponse
+	public function store(AddQuoteRequest $request, Movie $movie): RedirectResponse
 	{
-		request()->validate([
-			'title' => 'required',
-			'photo' => 'required|image',
-		]);
+		$request->validated();
 
 		$movie->quotes()->create([
 			'title' => request('title'),

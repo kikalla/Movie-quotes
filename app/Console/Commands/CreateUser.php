@@ -31,8 +31,9 @@ class CreateUser extends Command
 		$username = $this->ask('Enter Your Username');
 		$email = $this->ask('Enter your Email');
 		$password = $this->ask('Enter your Password');
+		$password = bcrypt($password);
 
-		User::create([
+		$user = User::create([
 			'username' => $username,
 			'email'    => $email,
 			'password' => $password,

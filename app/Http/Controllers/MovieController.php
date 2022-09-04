@@ -2,32 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddMovieRequest;
 use App\Models\Movie;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class MovieController extends Controller
 {
-	public function index()
+	public function movies(): View
 	{
-		return view('home', [
+		return view('movies', [
 			'movies' => Movie::all(),
 		]);
 	}
 
-	public function show(Movie $movie)
+	public function show(Movie $movie): View
 	{
 		return view('movie', [
 			'movie' => $movie,
 		]);
 	}
 
-	public function store(): RedirectResponse
+	public function store(AddMovieRequest $request): RedirectResponse
 	{
-		$atributes = request()->validate([
-			'title' => 'required|max:255|min:2',
-		]);
-		Movie::create($atributes);
-
+		Movie::create($request);
 		return redirect('/');
 	}
 }

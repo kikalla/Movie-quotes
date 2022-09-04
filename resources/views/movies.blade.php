@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,24 +8,19 @@
 </head>
 <body>
 
+<a href="/add-movie">add movie</a>
 
-@auth
-<a href="/movies">Movies</a>
-@endauth
+<br> <br>
 
-<br>
-<br>
-@guest
-<a href="/login">Login</a>
-@endguest
 
-@auth
-<form method="POST" action="/logout">
-    @csrf
-    <button type="submit">logout</button>
+@foreach ($movies as $movie)   
 
-</form>
-@endauth
+    <a href="/movies/{{$movie->id}}">
+        {{$movie->title}}
+    </a>
+    <br>
 
+@endforeach
+    
 </body>
-</html>                 
+</html>
