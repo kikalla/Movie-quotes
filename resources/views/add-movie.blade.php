@@ -16,6 +16,9 @@
             <label class="2xl:text-3xl text-xl text-center p-4 " for="title">Movie Title</label>
             <input placeholder="Movie Name" class="2xl:text-3xl border-blue-700 border-b-[2px] focus:outline-none w-[80%] ml-[5%]" type="text" name="title" id="title">
         </div>
+        @error('title')
+        <p class="text-red-500 mt-2 2xl:text-3xl text-xl text-center">{{ $message }}</p>
+        @enderror
         <button class="2xl:text-3xl mt-1 p-4 hover:bg-gray-500 hover:rounded-b-lg w-[100%]" type="submit">Create Movie</button>
     </form>
 
