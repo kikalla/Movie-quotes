@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 @vite('resources/css/app.css')
 <html lang="en">
@@ -31,10 +30,10 @@
     </div>
 </header>
 
-<div class="m-auto 2xl:mt-14 mt-6 max-w-[50%] flex flex-col text-center">
-    <img class="m-auto w-[80%]" src="/storage/photos/8LVlJbpooxg4b7aO90kvOSOkNLkFrGPKzbBhdpAG.png" alt="photo">
-    <p class="2xl:mt-14 mt-6 mb-14 2xl:text-5xl text-3xl text-white">Lorem ipsum dolor sit amet </p>
-    <h1 class="2xl:text-5xl text-3xl text-white">Lorem ipsum dolor sit ametLorem ipsum dolor sit amet</h1>
+<div class="m-auto 2xl:mt-14 mt-6 w-[50%] flex flex-col text-center">
+    <img class="m-auto w-[80%] 2xl:text-5xl text-3xl" src="/storage/{{$quotePhoto}}" alt="No Photo Yet">
+    <p class="2xl:mt-14 mt-6 mb-14 2xl:text-5xl text-3xl text-white">"{{$quote}}"</p>
+    <h1 class="2xl:text-5xl text-3xl text-white">{{$movie->title}}</h1>
 </div>
 
 </body>
