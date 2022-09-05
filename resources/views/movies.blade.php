@@ -12,13 +12,13 @@
     <section class="flex flex-col justify-center align-middle">
         @auth
         <div class="m-auto 2xl:mt-16 mt-8">
-            <a class="bg-cyan-50 2xl:p-8 p-4 rounded-3xl mt-20 2xl:text-5xl text-2xl hover:bg-red-400 hover:text-white" href="/add-movie">Add Movie</a>
+            <a class="bg-cyan-50 2xl:p-8 p-4 rounded-3xl mt-20 2xl:text-5xl text-2xl hover:bg-red-400 hover:text-white" href="movies/create">Add Movie</a>
         </div>
         @endauth
         <div class="flex flex-col 2xl:text-5xl text-xl m-auto my-20 items-center">
 
             @foreach ($movies as $movie)   
-            <a class="2xl:my-6 my-3  bg-slate-400 2xl:p-8 p-4 rounded-3xl hover:scale-90" href="/movies/{{$movie->id}}">
+            <a class="2xl:my-6 my-3  bg-slate-400 2xl:p-8 p-4 rounded-3xl hover:scale-90" href="/movies/{{$movie->id}}/quote">
                 {{$movie->title}}
             </a>
             @endforeach

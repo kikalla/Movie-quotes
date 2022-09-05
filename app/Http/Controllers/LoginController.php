@@ -20,7 +20,7 @@ class LoginController extends Controller
 		throw ValidationException::withMessages(['email' => 'Your provided credentials could not be verified.']);
 	}
 
-	public function destroy(): RedirectResponse
+	public function logout(): RedirectResponse
 	{
 		auth()->logout();
 		return redirect('/')->with('sucsess', 'Goodbye');
