@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {return view('home', ['movies' => Movie::all()]); })->name('home');
-Route::get('movies/{movie:id}', [MovieController::class, 'show'])->name('movie-page')->middleware('auth');
-Route::get('movies', [MovieController::class, 'movies'])->name('movies-page')->middleware('auth');
+Route::get('movies/{movie:id}', [MovieController::class, 'show'])->name('movie-page');
+Route::get('movies', [MovieController::class, 'movies'])->name('movies-page');
 
 Route::get('add-movie', function () {return view('/add-movie'); })->name('add-movie-page')->middleware('auth');
 Route::post('add-movie', [MovieController::class, 'store'])->name('add-movie')->middleware('auth');
