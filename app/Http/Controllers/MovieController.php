@@ -26,7 +26,11 @@ class MovieController extends Controller
 
 	public function store(AddMovieRequest $request): RedirectResponse
 	{
-		Movie::create($request);
+		$request->validated();
+
+		Movie::create([
+			'title' => request('title'),
+		]);
 		return redirect('/');
 	}
 
