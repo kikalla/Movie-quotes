@@ -22,7 +22,6 @@ Route::get('movies/create', function () {return view('movies-create'); })->name(
 Route::get('/', function () {return view('home', ['movies' => Movie::all()]); })->name('home');
 Route::get('movies/{movie:id}', [MovieController::class, 'show'])->name('movie-show');
 Route::get('movies', [MovieController::class, 'movies'])->name('movies-show');
-Route::get('/', [MovieController::class, 'getRandomMovie'])->name('get-random-movie');
 Route::get('/', [MovieController::class, 'getRandomQuote'])->name('get-random-quote');
 Route::post('movies', [MovieController::class, 'store'])->name('movie-create')->middleware('auth');
 

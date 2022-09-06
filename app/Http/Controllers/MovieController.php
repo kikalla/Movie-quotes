@@ -34,14 +34,6 @@ class MovieController extends Controller
 		return redirect('/');
 	}
 
-	public function getRandomMovie()
-	{
-		$movie = Movie::inRandomOrder()->first();
-		return view('/home', [
-			'movie' => $movie,
-		]);
-	}
-
 	public function getRandomQuote()
 	{
 		$movie = Movie::inRandomOrder()->first();
