@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AddQuoteRequest;
 use App\Models\Movie;
+use App\Models\Quote;
 use Illuminate\Http\RedirectResponse;
 
 class QuoteController extends Controller
@@ -18,5 +19,11 @@ class QuoteController extends Controller
 		]);
 
 		return redirect('/');
+	}
+
+	public function destroy(Movie $movie, Quote $quote)
+	{
+		$quote->delete();
+		return back();
 	}
 }

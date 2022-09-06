@@ -18,9 +18,16 @@
         <div class="flex flex-col 2xl:text-5xl text-xl m-auto my-20 items-center">
 
             @foreach ($movies as $movie)   
-            <a class="2xl:my-6 my-3  bg-slate-400 2xl:p-8 p-4 rounded-3xl hover:scale-90" href="{{route('movie-show', $movie)}}">
-                {{$movie->title}}
-            </a>
+            <div class="flex">
+                <a class="2xl:my-6 my-3  bg-slate-400 2xl:p-8 p-4 rounded-3xl hover:scale-90" href="{{route('movie-show', $movie)}}">
+                    {{$movie->title}}
+                </a>
+                <form method="POST" action="movies/delete/{{$movie->id}}">
+                    @csrf
+                    @method('DELETE')
+                    <button>Delete</button>
+                </form>
+            </div>
             @endforeach
 
         </div>

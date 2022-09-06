@@ -30,3 +30,6 @@ Route::post('movies/{movie:id}/quotes', [QuoteController::class, 'store'])->name
 Route::get('login', function () {return view('login'); })->name('login-show')->middleware('guest');
 Route::post('login', [LoginController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+
+Route::delete('movies/delete/{movie:id}', [MovieController::class, 'destroy'])->name('destroy-movie')->middleware('auth');
+Route::delete('movies/{movie:id}/delete/{quote:id}', [QuoteController::class, 'destroy'])->name('destroy-quote')->middleware('auth');
