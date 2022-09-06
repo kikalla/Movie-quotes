@@ -12,13 +12,13 @@
     <section class="flex flex-col justify-center align-middle">
         @auth
         <div class="m-auto 2xl:mt-16 mt-8">
-            <a class="bg-cyan-50 2xl:p-8 p-4 rounded-3xl mt-20 2xl:text-5xl text-2xl hover:bg-red-400 hover:text-white" href="movies/create">Add Movie</a>
+            <a class="bg-cyan-50 2xl:p-8 p-4 rounded-3xl mt-20 2xl:text-5xl text-2xl hover:bg-red-400 hover:text-white" href="{{route('movie-create-show')}}">Add Movie</a>
         </div>
         @endauth
         <div class="flex flex-col 2xl:text-5xl text-xl m-auto my-20 items-center">
 
             @foreach ($movies as $movie)   
-            <a class="2xl:my-6 my-3  bg-slate-400 2xl:p-8 p-4 rounded-3xl hover:scale-90" href="/movies/{{$movie->id}}/quote">
+            <a class="2xl:my-6 my-3  bg-slate-400 2xl:p-8 p-4 rounded-3xl hover:scale-90" href="{{route('movie-show', $movie)}}">
                 {{$movie->title}}
             </a>
             @endforeach
@@ -36,7 +36,7 @@
     @endauth
 
     @guest
-        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[8%]" href="/login">Login</a>
+        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[8%]" href="{{route('login-show')}}">Login</a>
     @endguest
 
     <div>

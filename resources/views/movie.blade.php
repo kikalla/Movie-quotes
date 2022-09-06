@@ -13,7 +13,7 @@
     <div class="flex flex-col m-auto my-8 w-[50%] items-center ">
         <div class="2xl:text-5xl text-3xl text-center text-white" >{{$movie->title}}</div>
         @auth
-        <form class="bg-white rounded-lg w-[70%] mb-[20px] mt-[15px] flex flex-col" method="POST" action="" enctype="multipart/form-data">
+        <form class="bg-white rounded-lg w-[70%] mb-[20px] mt-[15px] flex flex-col" method="POST" action="{{$movie->id}}/quotes" enctype="multipart/form-data">
             @csrf
             <div class="border-b-4 rounded-t-lg p-4">
                 <label class="2xl:text-3xl" for="title">Quote</label>
@@ -49,11 +49,11 @@
     @endauth
 
     @guest
-        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[8%]" href="/login">Login</a>
+        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[8%]" href="{{route('login-show')}}">Login</a>
     @endguest
     
     <div>
-        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[1%]" href="/movies">Back</a>
+        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[1%]" href="{{route('movies-show')}}">Back</a>
     </div>
 
 </body>

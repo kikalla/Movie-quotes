@@ -10,7 +10,7 @@
 </head>
 <body style="background: rgb(78, 78, 78)">
     
-    <form class="m-auto mt-20 w-[22%] bg-white rounded-lg flex flex-col items-center" method="POST" action="">
+    <form class="m-auto mt-20 w-[22%] bg-white rounded-lg flex flex-col items-center" method="POST" action="/movies">
         @csrf
         <div class="flex flex-col items-center">
             <label class="2xl:text-3xl text-xl text-center p-4 " for="title">Movie Title</label>
@@ -32,11 +32,11 @@
     @endauth
 
     @guest
-        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[8%]" href="/login">Login</a>
+        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[8%]" href="{{route('login-show')}}">Login</a>
     @endguest
     
     <div>
-        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[1%]" href="/movies">Back</a>
+        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[1%]" href="{{route('movies-show')}}">Back</a>
     </div>
 </body>
 </html>
