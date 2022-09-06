@@ -28,14 +28,10 @@ class CreateUser extends Command
 	 */
 	public function handle()
 	{
-		$username = $this->ask('Enter Your Username');
-		$email = $this->ask('Enter your Email');
-		$password = $this->ask('Enter your Password');
-
 		User::create([
-			'username' => $username,
-			'email'    => $email,
-			'password' => $password,
+			'username' => $this->ask('Enter Your Username'),
+			'email'    => $this->ask('Enter your Email'),
+			'password' => bcrypt($this->ask('Enter your Password')),
 		]);
 	}
 }
