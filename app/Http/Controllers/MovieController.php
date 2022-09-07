@@ -52,4 +52,20 @@ class MovieController extends Controller
 		$movie->delete();
 		return redirect('movies');
 	}
+
+	public function edit(Movie $movie): View
+	{
+		return view('edit-movie', ['movie' => $movie]);
+	}
+
+	public function update(AddMovieRequest $request, Movie $movie): RedirectResponse
+	{
+		$request->validated();
+
+		$movie->update([
+			'title' => request('title'),
+		]);
+
+		return redirect('movies');
+	}
 }

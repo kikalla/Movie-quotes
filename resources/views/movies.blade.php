@@ -27,6 +27,7 @@
                     @method('DELETE')
                     <button>Delete</button>
                 </form>
+                <a href="{{route('edit-movie', $movie)}}">Edit</a>
             </div>
             @endforeach
 

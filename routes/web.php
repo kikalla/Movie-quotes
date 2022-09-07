@@ -24,8 +24,12 @@ Route::get('movies/{movie:id}', [MovieController::class, 'show'])->name('movie-s
 Route::get('movies', [MovieController::class, 'movies'])->name('movies-show');
 Route::get('/', [MovieController::class, 'getRandomQuote'])->name('get-random-quote');
 Route::post('movies', [MovieController::class, 'store'])->name('movie-create')->middleware('auth');
+Route::get('edit/movie/{movie:id}', [MovieController::class, 'edit'])->name('edit-movie')->middleware('auth');
+Route::patch('edit/movie/{movie:id}', [MovieController::class, 'update'])->name('update-movie')->middleware('auth');
 
 Route::post('movies/{movie:id}/quotes', [QuoteController::class, 'store'])->name('quote-create')->middleware('auth');
+Route::get('edit/movie/{movie:id}/{quote:id}', [QuoteController::class, 'edit'])->name('edit-quote')->middleware('auth');
+Route::patch('edit/movie/{movie:id}/{quote:id}', [QuoteController::class, 'update'])->name('update-quote')->middleware('auth');
 
 Route::get('login', function () {return view('login'); })->name('login-show')->middleware('guest');
 Route::post('login', [LoginController::class, 'login'])->name('login')->middleware('guest');
