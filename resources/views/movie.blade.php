@@ -38,14 +38,18 @@
     <div class="text-center">
         <div class="w-[50%] items-center m-auto flex flex-col">
             <img class="w-[70%] 2xl:max-h-[400px] lg:max-h-[300px] object-cover rounded-t-lg border-black border-solid border-2" src="/storage/{{$quote->photo}}" alt="photo">
-            <h1 class="mb-[20px] w-[70%] 2xl:text-3xl rounded-b-lg  text-center bg-white border-black border-solid border-2 relative bottom-1 break-words">"{{$quote->title}}"</h1>
+            <h1 class="w-[70%] 2xl:text-3xl rounded-b-lg  text-center bg-white border-black border-solid border-2 relative bottom-1 break-words">"{{$quote->title}}"</h1>
         </div>
-        <form method="POST" action="{{$movie->id}}/delete/{{$quote->id}}">
-            @csrf
-            @method('DELETE')
-            <button class="bg-white mb-8">Delete</button>
-        </form>
-        <a href="{{route('edit-quote', [$movie,$quote])}}">Edit</a>
+        @auth
+        <div class="flex justify-center">
+            <form method="POST" action="{{$movie->id}}/delete/{{$quote->id}}">
+                @csrf
+                @method('DELETE')
+                <button class="bg-red-500 rounded-3xl p-1 hover:scale-90 2xl:text-4xl text-2xl mr-3">Delete</button>
+            </form>
+            <a class="bg-green-500 rounded-3xl p-1 hover:scale-90 mb-[20px] 2xl:text-4xl text-2xl" href="{{route('edit-quote', [$movie,$quote])}}">Edit</a>
+        </div>
+        @endauth
     </div>
     
 
