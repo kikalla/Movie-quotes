@@ -10,7 +10,7 @@
 </head>
 <body style="background: rgb(78, 78, 78)">
     
-    <form class="m-auto mt-20 w-[22%] bg-white rounded-lg flex flex-col items-center" method="POST" action="{{$movie->id}}">
+    <form class="m-auto mt-20 w-[22%] bg-white rounded-lg flex flex-col items-center" method="POST" action="{{route('update-movie', $movie)}}">
         @csrf
         @method('PATCH')
 
@@ -28,7 +28,7 @@
 
     @auth
         <div class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[8%]">
-            <form method="POST" action="/logout">
+            <form method="POST" action="{{route('logout')}}">
             @csrf
             <button type="submit">Logout</button>
             </form>

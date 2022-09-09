@@ -6,42 +6,36 @@ use App\Http\Requests\AddQuoteRequest;
 use App\Models\Movie;
 use App\Models\Quote;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 
 class QuoteController extends Controller
 {
 	public function store(AddQuoteRequest $request, Movie $movie): RedirectResponse
 	{
-		$request->validated();
+		$request->validated(); //aaaa
 
 		$movie->quotes()->create([
-			'title' => request('title'),
-			'photo' => request()->file('photo')->store('photos'),
+			'title' => $request->title, //aaaa
+			'photo' => $request->file('photo')->store('photos'),
 		]);
 
 		return redirect('/');
 	}
 
-	public function destroy(Movie $movie, Quote $quote): RedirectResponse
+	public function destroy(Quote $quote): RedirectResponse
 	{
 		$quote->delete();
 		return back();
 	}
 
-	public function edit(Movie $movie, Quote $quote): View
-	{
-		return view('edit-quote', ['quote' => $quote, 'movie' => $movie]);
-	}
-
 	public function update(AddQuoteRequest $request, Movie $movie, Quote $quote): RedirectResponse
 	{
-		$request->validated();
+		$request->validated(); //aaa
 
 		$quote->update([
 			'title' => request('title'),
 			'photo' => request()->file('photo')->store('photos'),
 		]);
 
-		return back();
+		return redirect(route('movie-show', $movie));
 	}
 }

@@ -42,7 +42,7 @@
         </div>
         @auth
         <div class="flex justify-center">
-            <form method="POST" action="{{$movie->id}}/delete/{{$quote->id}}">
+            <form method="POST" action="{{route('destroy-quote', $quote)}}">
                 @csrf
                 @method('DELETE')
                 <button class="bg-red-500 rounded-3xl p-1 hover:scale-90 2xl:text-4xl text-2xl mr-3">Delete</button>
@@ -57,7 +57,7 @@
 
     @auth
         <div class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[8%]">
-            <form method="POST" action="/logout">
+            <form method="POST" action="{{route('logout')}}">
             @csrf
             <button type="submit">Logout</button>
             </form>

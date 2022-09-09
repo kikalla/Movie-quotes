@@ -36,7 +36,7 @@
     
     @auth
         <div class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[8%]">
-            <form method="POST" action="/logout">
+            <form method="POST" action="{{route('logout')}}">
             @csrf
             <button type="submit">Logout</button>
             </form>

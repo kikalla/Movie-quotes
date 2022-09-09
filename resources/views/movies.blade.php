@@ -23,7 +23,7 @@
                     {{$movie->title}}
                 </a>
                 @auth
-                <form class="mx-[4%]" method="POST" action="movies/delete/{{$movie->id}}">
+                <form class="mx-[4%]" method="POST" action="{{route('destroy-movie', $movie)}}">
                     @csrf
                     @method('DELETE')
                     <button class="bg-red-500 rounded-3xl p-1 hover:scale-90 2xl:text-4xl text-lg">Delete</button>
@@ -38,7 +38,7 @@
 
     @auth
         <div class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[8%]">
-            <form method="POST" action="/logout">
+            <form method="POST" action="{{route('logout')}}">
             @csrf
             <button type="submit">Logout</button>
             </form>
