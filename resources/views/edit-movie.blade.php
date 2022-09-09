@@ -23,24 +23,24 @@
         @error('title')
         <p class="text-red-500 mt-2 2xl:text-3xl text-xl text-center">{{ $message }}</p>
         @enderror
-        <button class="2xl:text-3xl mt-1 p-4 hover:bg-gray-500 hover:rounded-b-lg w-[100%]" type="submit">Update Movie Name</button>
+        <button class="2xl:text-3xl mt-1 p-4 hover:bg-gray-500 hover:rounded-b-lg w-[100%]" type="submit">{{__('translation.update_movie_title')}}</button>
     </form>
 
     @auth
         <div class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[8%]">
             <form method="POST" action="{{route('logout')}}">
             @csrf
-            <button type="submit">Logout</button>
+            <button type="submit">{{__('translation.logout')}}</button>
             </form>
         </div>
     @endauth
 
     @guest
-        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[8%]" href="{{route('login-show')}}">Login</a>
+        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[8%]" href="{{route('login-show')}}">{{__('translation.login')}}</a>
     @endguest
     
     <div>
-        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[1%]" href="{{route('movies-show')}}">Back</a>
+        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[1%]" href="{{route('movies-show')}}">{{__('translation.back')}}</a>
     </div>
 </body>
 </html>

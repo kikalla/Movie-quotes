@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\LoginController;
@@ -45,3 +46,5 @@ Route::controller(QuoteController::class)->group(function () {
 Route::get('login', function () {return view('login'); })->name('login-show')->middleware('guest');
 Route::post('login', [LoginController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+
+Route::get('/change.locale/{locale}', [LanguageController::class, 'change'])->name('locale-change');

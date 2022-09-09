@@ -16,20 +16,20 @@
             @csrf
             @method('PATCH')
             <div class="border-b-4 rounded-t-lg p-4">
-                <label class="2xl:text-3xl" for="title">Quote</label>
+                <label class="2xl:text-3xl" for="title">{{__('translation.quote')}}</label>
                 <input value="{{old('title', $quote->title)}}" placeholder="Update Quote" class="2xl:text-3xl border-blue-700 border-b-[2px] focus:outline-none w-[80%] ml-[5%]" type="text" name="title" id="title">
             </div>
             @error('title')
             <p class="text-red-500 mt-2 2xl:text-3xl text-xl text-center">{{ $message }}</p>
             @enderror
             <div class="border-b-4 flex p-4">
-                <label class="2xl:text-3xl w-[40%]" for="photo">Update Photo</label>
+                <label class="2xl:text-3xl w-[40%]" for="photo">{{__('translation.update_photo')}}</label>
                 <input class="2xl:text-3xl" id="photo" name="photo" type="file">
             </div>
             @error('photo')
             <p class="text-red-500 mt-2 2xl:text-3xl text-xl text-center">{{ $message }}</p>
             @enderror
-            <button class="2xl:text-3xl p-4 hover:bg-gray-500 hover:rounded-b-lg hover:text-white" type="submit">Update Quote</button>
+            <button class="2xl:text-3xl p-4 hover:bg-gray-500 hover:rounded-b-lg hover:text-white" type="submit">{{__('translation.update_quote')}}</button>
         </form>
 
     </div>
@@ -38,17 +38,17 @@
         <div class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[8%]">
             <form method="POST" action="{{route('logout')}}">
             @csrf
-            <button type="submit">Logout</button>
+            <button type="submit">{{__('translation.logout')}}</button>
             </form>
         </div>
     @endauth
 
     @guest
-        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[8%]" href="{{route('login-show')}}">Login</a>
+        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[8%]" href="{{route('login-show')}}">{{__('translation.login')}}</a>
     @endguest
     
     <div>
-        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[1%]" href="{{route('movie-show', $movie)}}">Back</a>
+        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[1%]" href="{{route('movie-show', $movie)}}">{{__('translation.back')}}</a>
     </div>
 
 </body>

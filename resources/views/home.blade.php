@@ -13,17 +13,17 @@
 
 <header class="">
     <div class="flex justify-end mt-6 2xl:px-20 2xl:py-5 py-2">
-        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white" href="{{route('movies-show')}}">Movies</a>
+        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white" href="{{route('movies-show')}}">{{__('translation.movies')}}</a>
         
         @guest
-        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white" href="{{route('login-show')}}">Login</a>
+        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white" href="{{route('login-show')}}">{{__('translation.login')}}</a>
         @endguest
 
         @auth
         <div class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white">
             <form method="POST" action="{{route('logout')}}">
             @csrf
-            <button type="submit">Logout</button>
+            <button type="submit">{{__('translation.logout')}}</button>
             </form>
         </div>
         @endauth

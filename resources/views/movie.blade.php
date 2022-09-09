@@ -16,20 +16,20 @@
         <form class="bg-white rounded-lg w-[70%] mb-[20px] mt-[15px] flex flex-col" method="POST" action="{{$movie->id}}/quotes" enctype="multipart/form-data">
             @csrf
             <div class="border-b-4 rounded-t-lg p-4">
-                <label class="2xl:text-3xl" for="title">Quote</label>
+                <label class="2xl:text-3xl" for="title">{{__('translation.quote')}}</label>
                 <input placeholder="Type Quote" class="2xl:text-3xl border-blue-700 border-b-[2px] focus:outline-none w-[80%] ml-[5%]" type="text" name="title" id="title">
             </div>
             @error('title')
             <p class="text-red-500 mt-2 2xl:text-3xl text-xl text-center">{{ $message }}</p>
             @enderror
             <div class="border-b-4 flex p-4">
-                <label class="2xl:text-3xl w-[40%]" for="photo">Add Photo</label>
+                <label class="2xl:text-3xl w-[40%]" for="photo">{{__('translation.add_photo')}}</label>
                 <input class="2xl:text-3xl" id="photo" name="photo" type="file">
             </div>
             @error('photo')
             <p class="text-red-500 mt-2 2xl:text-3xl text-xl text-center">{{ $message }}</p>
             @enderror
-            <button class="2xl:text-3xl p-4 hover:bg-gray-500 hover:rounded-b-lg hover:text-white" type="submit">Create Quote</button>
+            <button class="2xl:text-3xl p-4 hover:bg-gray-500 hover:rounded-b-lg hover:text-white" type="submit">{{__('translation.create_quote')}}</button>
         </form>
         @endauth
     </div>
@@ -45,9 +45,9 @@
             <form method="POST" action="{{route('destroy-quote', $quote)}}">
                 @csrf
                 @method('DELETE')
-                <button class="bg-red-500 rounded-3xl p-1 hover:scale-90 2xl:text-4xl text-2xl mr-3">Delete</button>
+                <button class="bg-red-500 rounded-3xl p-1 hover:scale-90 2xl:text-4xl text-2xl mr-3">{{__('translation.delete')}}</button>
             </form>
-            <a class="bg-green-500 rounded-3xl p-1 hover:scale-90 mb-[20px] 2xl:text-4xl text-2xl" href="{{route('edit-quote', [$movie,$quote])}}">Edit</a>
+            <a class="bg-green-500 rounded-3xl p-1 hover:scale-90 mb-[20px] 2xl:text-4xl text-2xl" href="{{route('edit-quote', [$movie,$quote])}}">{{__('translation.edit')}}</a>
         </div>
         @endauth
     </div>
@@ -59,17 +59,17 @@
         <div class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[8%]">
             <form method="POST" action="{{route('logout')}}">
             @csrf
-            <button type="submit">Logout</button>
+            <button type="submit">{{__('translation.logout')}}</button>
             </form>
         </div>
     @endauth
 
     @guest
-        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[8%]" href="{{route('login-show')}}">Login</a>
+        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[8%]" href="{{route('login-show')}}">{{__('translation.login')}}</a>
     @endguest
     
     <div>
-        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[1%]" href="{{route('movies-show')}}">Back</a>
+        <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[1%]" href="{{route('movies-show')}}">{{__('translation.back')}}</a>
     </div>
 
 </body>
