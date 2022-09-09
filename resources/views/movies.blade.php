@@ -18,9 +18,19 @@
         <div class="flex flex-col 2xl:text-5xl text-xl m-auto my-20 items-center">
 
             @foreach ($movies as $movie)   
-            <a class="2xl:my-6 my-3  bg-slate-400 2xl:p-8 p-4 rounded-3xl hover:scale-90" href="{{route('movie-show', $movie)}}">
-                {{$movie->title}}
-            </a>
+            <div class="flex items-center">
+                <a class="2xl:my-6 my-3  bg-slate-400 2xl:p-8 p-4 rounded-3xl hover:scale-90" href="{{route('movie-show', $movie)}}">
+                    {{$movie->title}}
+                </a>
+                @auth
+                <form class="mx-[4%]" method="POST" action="{{route('destroy-movie', $movie)}}">
+                    @csrf
+                    @method('DELETE')
+                    <button class="bg-red-500 rounded-3xl p-1 hover:scale-90 2xl:text-4xl text-lg">Delete</button>
+                </form>
+                <a class="bg-green-500 rounded-3xl p-1 hover:scale-90 2xl:text-4xl text-lg" href="{{route('edit-movie', $movie)}}">Edit</a>
+                @endauth
+            </div>
             @endforeach
 
         </div>
@@ -28,7 +38,7 @@
 
     @auth
         <div class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[8%]">
-            <form method="POST" action="/logout">
+            <form method="POST" action="{{route('logout')}}">
             @csrf
             <button type="submit">Logout</button>
             </form>

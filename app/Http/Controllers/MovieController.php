@@ -20,7 +20,7 @@ class MovieController extends Controller
 	public function show(Movie $movie): View
 	{
 		return view('movie', [
-			'movie' => $movie,
+			'movie'  => $movie,
 		]);
 	}
 
@@ -45,5 +45,22 @@ class MovieController extends Controller
 			'quote'      => $quote,
 			'quotePhoto' => $quotePhoto,
 		]);
+	}
+
+	public function destroy(Movie $movie): RedirectResponse
+	{
+		$movie->delete();
+		return redirect('movies');
+	}
+
+	public function update(AddMovieRequest $request, Movie $movie): RedirectResponse
+	{
+		$request->validated();
+
+		$movie->update([
+			'title' => request('title'),
+		]);
+
+		return redirect('movies');
 	}
 }

@@ -10,16 +10,20 @@
 </head>
 <body style="background: rgb(78, 78, 78)">
     
-    <form class="m-auto mt-20 w-[22%] bg-white rounded-lg flex flex-col items-center" method="POST" action="{{route('movie-create')}}">
+    <form class="m-auto mt-20 w-[22%] bg-white rounded-lg flex flex-col items-center" method="POST" action="{{route('update-movie', $movie)}}">
         @csrf
+        @method('PATCH')
+
+        <div class="2xl:text-3xl text-xl text-center p-4 ">
+            {{$movie->title}}
+        </div>
         <div class="flex flex-col items-center">
-            <label class="2xl:text-3xl text-xl text-center p-4 " for="title">Movie Title</label>
-            <input placeholder="Movie Name" class="2xl:text-3xl border-blue-700 border-b-[2px] focus:outline-none w-[80%] ml-[5%]" type="text" name="title" id="title">
+            <input value="{{old('title', $movie->title)}}" placeholder="Update Movie Name" class="2xl:text-3xl border-blue-700 border-b-[2px] focus:outline-none w-[80%] ml-[5%]" type="text" name="title" id="title">
         </div>
         @error('title')
         <p class="text-red-500 mt-2 2xl:text-3xl text-xl text-center">{{ $message }}</p>
         @enderror
-        <button class="2xl:text-3xl mt-1 p-4 hover:bg-gray-500 hover:rounded-b-lg w-[100%]" type="submit">Create Movie</button>
+        <button class="2xl:text-3xl mt-1 p-4 hover:bg-gray-500 hover:rounded-b-lg w-[100%]" type="submit">Update Movie Name</button>
     </form>
 
     @auth
