@@ -13,7 +13,7 @@
     <form class="m-auto mt-20 w-[22%] bg-white rounded-lg flex flex-col items-center" method="POST" action="{{route('movie-create')}}">
         @csrf
         <div class="flex flex-col items-center">
-            <label class="2xl:text-3xl text-xl text-center p-4 " for="title_en">{{__('translation.movie_title')}}</label>
+            <label class="2xl:text-3xl text-xl text-center p-4 " for="title_en">{{__('translation.movie_title_en')}}</label>
             <input placeholder="Movie Name" class="2xl:text-3xl border-blue-700 border-b-[2px] focus:outline-none w-[80%] ml-[5%]" type="text" name="title_en" id="title_en">
         </div>
         @error('title_en')
@@ -21,7 +21,7 @@
         @enderror
 
         <div class="flex flex-col items-center">
-            <label class="2xl:text-3xl text-xl text-center p-4 " for="title_ka">{{__('translation.movie_title')}}</label>
+            <label class="2xl:text-3xl text-xl text-center p-4 " for="title_ka">{{__('translation.movie_title_ka')}}</label>
             <input placeholder="Movie Name(ka)" class="2xl:text-3xl border-blue-700 border-b-[2px] focus:outline-none w-[80%] ml-[5%]" type="text" name="title_ka" id="title_ka">
         </div>
         @error('title_ka')
@@ -47,5 +47,16 @@
     <div>
         <a class="2xl:text-3xl text-xl mr-14 2xl:p-4 p-2 rounded-lg bg-cyan-50 hover:bg-red-400 hover:text-white absolute top-[5%] right-[1%]" href="{{route('movies-show')}}">{{__('translation.back')}}</a>
     </div>
+    @if (App::currentLocale() == 'en')
+    <a class="bg-red-500 inline-block 2xl:w-14 2xl:h-14 2xl:text-3xl absolute left-[1%] top-[47%] text-center border border-black pt-1 w-8 h-8 rounded-full" href="{{route('locale-change', 'ka')}}">ka</a>
+    @else
+    <a class="bg-green-500 inline-block 2xl:w-14 2xl:h-14 2xl:text-3xl absolute left-[1%] top-[47%] text-center border border-black pt-1 w-8 h-8 rounded-full" href="{{route('locale-change', 'ka')}}">ka</a>
+    @endif
+
+    @if (App::currentLocale() == 'ka')
+    <a class="bg-red-500 inline-block 2xl:w-14 2xl:h-14 2xl:text-3xl absolute left-[1%] top-[53%] text-center border border-black pt-1 w-8 h-8 rounded-full" href="{{route('locale-change', 'en')}}">en</a>
+    @else
+    <a class="bg-green-500 inline-block 2xl:w-14 2xl:h-14 2xl:text-3xl absolute left-[1%] top-[53%] text-center border border-black pt-1 w-8 h-8 rounded-full" href="{{route('locale-change', 'en')}}">en</a>
+    @endif
 </body>
 </html>

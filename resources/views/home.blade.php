@@ -37,19 +37,19 @@
     <h1 class="2xl:text-5xl text-3xl text-white">{{$movie->title}}</h1>
 </div>
 @else
-<h1 class="m-auto 2xl:text-5xl text-3xl" t>No Movie Yet</h1>
+<h1 class="m-auto 2xl:text-5xl text-3xl" t>{{__('translation.no_movie_yet')}}</h1>
 @endif
 
 @if (App::currentLocale() == 'en')
-<a class="bg-red-500 inline-block absolute left-[1%] top-[47%] text-center border border-black pt-1 w-8 h-8 rounded-full" href="{{route('locale-change', 'ka')}}">ka</a>
+<a class="bg-red-500 inline-block 2xl:w-14 2xl:h-14 2xl:text-3xl absolute left-[1%] top-[47%] text-center border border-black pt-1 w-8 h-8 rounded-full" href="{{route('locale-change', 'ka')}}">ka</a>
 @else
-<a class="bg-green-500 inline-block absolute left-[1%] top-[47%] text-center border border-black pt-1 w-8 h-8 rounded-full" href="{{route('locale-change', 'ka')}}">ka</a>
+<a class="bg-green-500 inline-block 2xl:w-14 2xl:h-14 2xl:text-3xl absolute left-[1%] top-[47%] text-center border border-black pt-1 w-8 h-8 rounded-full" href="{{route('locale-change', 'ka')}}">ka</a>
 @endif
 
 @if (App::currentLocale() == 'ka')
-<a class="bg-red-500 inline-block absolute left-[1%] top-[53%] text-center border border-black pt-1 w-8 h-8 rounded-full" href="{{route('locale-change', 'en')}}">en</a>
+<a class="bg-red-500 inline-block 2xl:w-14 2xl:h-14 2xl:text-3xl absolute left-[1%] top-[53%] text-center border border-black pt-1 w-8 h-8 rounded-full" href="{{route('locale-change', 'en')}}">en</a>
 @else
-<a class="bg-green-500 inline-block absolute left-[1%] top-[53%] text-center border border-black pt-1 w-8 h-8 rounded-full" href="{{route('locale-change', 'en')}}">en</a>
+<a class="bg-green-500 inline-block 2xl:w-14 2xl:h-14 2xl:text-3xl absolute left-[1%] top-[53%] text-center border border-black pt-1 w-8 h-8 rounded-full" href="{{route('locale-change', 'en')}}">en</a>
 @endif
 
 </body>
