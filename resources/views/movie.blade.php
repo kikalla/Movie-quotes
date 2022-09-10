@@ -15,11 +15,20 @@
         @auth
         <form class="bg-white rounded-lg w-[70%] mb-[20px] mt-[15px] flex flex-col" method="POST" action="{{$movie->id}}/quotes" enctype="multipart/form-data">
             @csrf
+
             <div class="border-b-4 rounded-t-lg p-4">
-                <label class="2xl:text-3xl" for="title">{{__('translation.quote')}}</label>
-                <input placeholder="Type Quote" class="2xl:text-3xl border-blue-700 border-b-[2px] focus:outline-none w-[80%] ml-[5%]" type="text" name="title" id="title">
+                <label class="2xl:text-3xl" for="title_en">{{__('translation.quote')}}</label>
+                <input placeholder="Type Quote" class="2xl:text-3xl border-blue-700 border-b-[2px] focus:outline-none w-[80%] ml-[5%]" type="text" name="title_en" id="title_en">
             </div>
-            @error('title')
+            @error('title_en')
+            <p class="text-red-500 mt-2 2xl:text-3xl text-xl text-center">{{ $message }}</p>
+            @enderror
+
+            <div class="border-b-4 rounded-t-lg p-4">
+                <label class="2xl:text-3xl" for="title_ka">{{__('translation.quote')}}</label>
+                <input placeholder="Type Quote" class="2xl:text-3xl border-blue-700 border-b-[2px] focus:outline-none w-[80%] ml-[5%]" type="text" name="title_ka" id="title_ka">
+            </div>
+            @error('title_ka')
             <p class="text-red-500 mt-2 2xl:text-3xl text-xl text-center">{{ $message }}</p>
             @enderror
             <div class="border-b-4 flex p-4">

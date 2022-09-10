@@ -17,10 +17,18 @@
         <div class="2xl:text-3xl text-xl text-center p-4 ">
             {{$movie->title}}
         </div>
+        
         <div class="flex flex-col items-center">
-            <input value="{{old('title', $movie->title)}}" placeholder="Update Movie Name" class="2xl:text-3xl border-blue-700 border-b-[2px] focus:outline-none w-[80%] ml-[5%]" type="text" name="title" id="title">
+            <input value="{{$movie->getTranslation('title', 'en')}}" placeholder="Update Movie Name" class="2xl:text-3xl border-blue-700 border-b-[2px] focus:outline-none w-[80%] ml-[5%]" type="text" name="title_en" id="title_en">
         </div>
-        @error('title')
+        @error('title_en')
+        <p class="text-red-500 mt-2 2xl:text-3xl text-xl text-center">{{ $message }}</p>
+        @enderror
+
+        <div class="flex flex-col items-center">
+            <input value="{{$movie->getTranslation('title', 'ka')}}" placeholder="Update Movie Name" class="2xl:text-3xl border-blue-700 border-b-[2px] focus:outline-none w-[80%] ml-[5%]" type="text" name="title_ka" id="title_ka">
+        </div>
+        @error('title_ka')
         <p class="text-red-500 mt-2 2xl:text-3xl text-xl text-center">{{ $message }}</p>
         @enderror
         <button class="2xl:text-3xl mt-1 p-4 hover:bg-gray-500 hover:rounded-b-lg w-[100%]" type="submit">{{__('translation.update_movie_title')}}</button>

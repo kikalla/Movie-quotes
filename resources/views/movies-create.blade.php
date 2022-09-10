@@ -13,12 +13,21 @@
     <form class="m-auto mt-20 w-[22%] bg-white rounded-lg flex flex-col items-center" method="POST" action="{{route('movie-create')}}">
         @csrf
         <div class="flex flex-col items-center">
-            <label class="2xl:text-3xl text-xl text-center p-4 " for="title">{{__('translation.movie_title')}}</label>
-            <input placeholder="Movie Name" class="2xl:text-3xl border-blue-700 border-b-[2px] focus:outline-none w-[80%] ml-[5%]" type="text" name="title" id="title">
+            <label class="2xl:text-3xl text-xl text-center p-4 " for="title_en">{{__('translation.movie_title')}}</label>
+            <input placeholder="Movie Name" class="2xl:text-3xl border-blue-700 border-b-[2px] focus:outline-none w-[80%] ml-[5%]" type="text" name="title_en" id="title_en">
         </div>
-        @error('title')
+        @error('title_en')
         <p class="text-red-500 mt-2 2xl:text-3xl text-xl text-center">{{ $message }}</p>
         @enderror
+
+        <div class="flex flex-col items-center">
+            <label class="2xl:text-3xl text-xl text-center p-4 " for="title_ka">{{__('translation.movie_title')}}</label>
+            <input placeholder="Movie Name(ka)" class="2xl:text-3xl border-blue-700 border-b-[2px] focus:outline-none w-[80%] ml-[5%]" type="text" name="title_ka" id="title_ka">
+        </div>
+        @error('title_ka')
+        <p class="text-red-500 mt-2 2xl:text-3xl text-xl text-center">{{ $message }}</p>
+        @enderror
+
         <button class="2xl:text-3xl mt-1 p-4 hover:bg-gray-500 hover:rounded-b-lg w-[100%]" type="submit">{{__('translation.create_movie')}}</button>
     </form>
 

@@ -14,8 +14,9 @@ class AddQuoteRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			'title' => 'required',
-			'photo' => 'required|image',
+			'title_en' => 'required|max:255|min:2',
+			'title_ka' => 'required|max:255|min:2',
+			'photo'    => 'required|image',
 		];
 	}
 }

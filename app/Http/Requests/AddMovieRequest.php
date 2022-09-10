@@ -14,7 +14,8 @@ class AddMovieRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			'title' => 'required|max:255|min:2',
+			'title_en' => 'required|max:255|min:2',
+			'title_ka' => 'required|max:255|min:2',
 		];
 	}
 }

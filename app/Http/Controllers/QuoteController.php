@@ -11,12 +11,13 @@ class QuoteController extends Controller
 {
 	public function store(AddQuoteRequest $request, Movie $movie): RedirectResponse
 	{
-		$request->validated(); //aaaa
+		$quote = new Quote();
 
-		$movie->quotes()->create([
-			'title' => $request->title, //aaaa
-			'photo' => $request->file('photo')->store('photos'),
-		]);
+		$quote->setAttribute('movie_id', $movie->id);
+		$quote->setTranslation('title', 'en', $request->title_en);
+		$quote->setTranslation('title', 'ka', $request->title_ka);
+		$quote->setAttribute('photo', $request->file('photo')->store('photos'));
+		$quote->save();
 
 		return redirect('/');
 	}
@@ -29,12 +30,11 @@ class QuoteController extends Controller
 
 	public function update(AddQuoteRequest $request, Movie $movie, Quote $quote): RedirectResponse
 	{
-		$request->validated(); //aaa
-
-		$quote->update([
-			'title' => request('title'),
-			'photo' => request()->file('photo')->store('photos'),
-		]);
+		$quote->setAttribute('movie_id', $movie->id);
+		$quote->setTranslation('title', 'en', $request->title_en);
+		$quote->setTranslation('title', 'ka', $request->title_ka);
+		$quote->setAttribute('photo', $request->file('photo')->store('photos'));
+		$quote->save();
 
 		return redirect(route('movie-show', $movie));
 	}
