@@ -27,7 +27,6 @@ Route::get('movie/{movie}/edit/{quote:id}', function (Movie $movie, Quote $quote
 Route::controller(MovieController::class)->group(function () {
 	Route::get('movies/{movie}', 'show')->name('movie-show');
 	Route::get('movies', 'movies')->name('movies-show');
-	Route::get('/', 'getRandomQuote')->name('get-random-quote');
 	Route::middleware('auth')->group(function () {
 		Route::post('movies', 'store')->name('movie-create');
 		Route::patch('movies/{movie}/edit', 'update')->name('update-movie');
@@ -36,6 +35,7 @@ Route::controller(MovieController::class)->group(function () {
 });
 
 Route::controller(QuoteController::class)->group(function () {
+	Route::get('/', 'getRandomQuote')->name('get-random-quote');
 	Route::middleware('auth')->group(function () {
 		Route::post('movies/{movie:id}/quotes', 'store')->name('store-quote');
 		Route::patch('movie/{movie:id}/edit/{quote:id}', 'update')->name('update-quote');

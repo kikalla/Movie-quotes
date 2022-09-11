@@ -16,6 +16,6 @@ class LanguageController extends Controller
 		{
 			session()->put('lang', 'en');
 		}
-		return redirect('/');
+		return redirect()->back();
 	}
 }

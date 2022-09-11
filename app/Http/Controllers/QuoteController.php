@@ -38,4 +38,16 @@ class QuoteController extends Controller
 
 		return redirect(route('movie-show', $movie));
 	}
+
+	public function getRandomQuote()
+	{
+		$movie = Movie::inRandomOrder()->first();
+		$quote = (Quote::all()->where('movie_id', $movie->id ?? 0)->toArray() === []) ? 'No Quote Yet' : Quote::all()->where('movie_id', $movie->id ?? 0)->random()->title;
+		$quotePhoto = (Quote::all()->where('movie_id', $movie->id ?? 0)->toArray() === []) ? '' : Quote::all()->where('movie_id', $movie->id ?? 0)->random()->photo;
+		return view('/home', [
+			'movie'      => $movie,
+			'quote'      => $quote,
+			'quotePhoto' => $quotePhoto,
+		]);
+	}
 }
