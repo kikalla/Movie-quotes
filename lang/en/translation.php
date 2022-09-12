@@ -20,5 +20,5 @@ return [
 	'movie_title_ka'           => 'Movie Title Georgian',
 	'add_movie'                => 'Add Movie',
 	'update_movie_title'       => 'Update Movie Name',
-	'no_movie_yet'             => 'No Movie Yet',
+	'no_quote_yet'             => 'No Quote Yet',
 ];

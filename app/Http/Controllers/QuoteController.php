@@ -41,13 +41,15 @@ class QuoteController extends Controller
 
 	public function getRandomQuote()
 	{
-		$movie = Movie::inRandomOrder()->first();
-		$quote = (Quote::all()->where('movie_id', $movie->id ?? 0)->toArray() === []) ? 'No Quote Yet' : Quote::all()->where('movie_id', $movie->id ?? 0)->random()->title;
-		$quotePhoto = (Quote::all()->where('movie_id', $movie->id ?? 0)->toArray() === []) ? '' : Quote::all()->where('movie_id', $movie->id ?? 0)->random()->photo;
-		return view('/home', [
+		$quote = Quote::inRandomOrder()->first();
+		$movie = $quote != null ? Movie::where('id', $quote->movie_id)->first() : 1;
+
+		return view('/home', $quote != null ? [
 			'movie'      => $movie,
 			'quote'      => $quote,
-			'quotePhoto' => $quotePhoto,
+			'quotePhoto' => $quote->photo,
+		] : [
+			'quote'      => $quote,
 		]);
 	}
 }

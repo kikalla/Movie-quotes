@@ -30,14 +30,14 @@
     </div>
 </header>
 
-@if ($movie)
+@if ($quote != null)
 <div class="m-auto 2xl:mt-14 mt-6 w-[50%] flex flex-col text-center">
     <img class="m-auto w-[80%] 2xl:text-5xl text-3xl" src="/storage/{{$quotePhoto}}" alt="No Photo Yet">
-    <p class="2xl:mt-14 mt-6 mb-14 2xl:text-5xl text-3xl text-white">"{{$quote}}"</p>
+    <p class="2xl:mt-14 mt-6 mb-14 2xl:text-5xl text-3xl text-white">"{{$quote->title}}"</p>
     <h1 class="2xl:text-5xl text-3xl text-white">{{$movie->title}}</h1>
 </div>
 @else
-<h1 class="m-auto 2xl:text-5xl text-3xl" t>{{__('translation.no_movie_yet')}}</h1>
+<h1 class="m-auto 2xl:text-5xl text-3xl" t>{{__('translation.no_quote_yet')}}</h1>
 @endif
 
 @if (App::currentLocale() == 'en')
