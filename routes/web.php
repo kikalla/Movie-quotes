@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\LoginController;
@@ -26,7 +27,6 @@ Route::get('movie/{movie}/edit/{quote:id}', function (Movie $movie, Quote $quote
 Route::controller(MovieController::class)->group(function () {
 	Route::get('movies/{movie}', 'show')->name('movie-show');
 	Route::get('movies', 'movies')->name('movies-show');
-	Route::get('/', 'getRandomQuote')->name('get-random-quote');
 	Route::middleware('auth')->group(function () {
 		Route::post('movies', 'store')->name('movie-create');
 		Route::patch('movies/{movie}/edit', 'update')->name('update-movie');
@@ -35,6 +35,7 @@ Route::controller(MovieController::class)->group(function () {
 });
 
 Route::controller(QuoteController::class)->group(function () {
+	Route::get('/', 'getRandomQuote')->name('get-random-quote');
 	Route::middleware('auth')->group(function () {
 		Route::post('movies/{movie:id}/quotes', 'store')->name('store-quote');
 		Route::patch('movie/{movie:id}/edit/{quote:id}', 'update')->name('update-quote');
@@ -45,3 +46,5 @@ Route::controller(QuoteController::class)->group(function () {
 Route::get('login', function () {return view('login'); })->name('login-show')->middleware('guest');
 Route::post('login', [LoginController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+
+Route::get('/change.locale/{locale}', [LanguageController::class, 'change'])->name('locale-change');

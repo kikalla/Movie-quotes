@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AddMovieRequest;
 use App\Models\Movie;
-use App\Models\Quote;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -26,25 +25,11 @@ class MovieController extends Controller
 
 	public function store(AddMovieRequest $request): RedirectResponse
 	{
-		$request->validated();
-
-		Movie::create([
-			'title' => request('title'),
-		]);
+		$movie = new Movie();
+		$movie->setTranslation('title', 'en', $request->title_en);
+		$movie->setTranslation('title', 'ka', $request->title_ka);
+		$movie->save();
 		return redirect('/');
-	}
-
-	public function getRandomQuote()
-	{
-		$movie = Movie::inRandomOrder()->first();
-		$movie_id = $movie->id;
-		$quote = (Quote::all()->where('movie_id', $movie_id)->toArray() === []) ? 'No Quote Yet' : Quote::all()->where('movie_id', $movie_id)->random()->title;
-		$quotePhoto = (Quote::all()->where('movie_id', $movie_id)->toArray() === []) ? '' : Quote::all()->where('movie_id', $movie_id)->random()->photo;
-		return view('/home', [
-			'movie'      => $movie,
-			'quote'      => $quote,
-			'quotePhoto' => $quotePhoto,
-		]);
 	}
 
 	public function destroy(Movie $movie): RedirectResponse
@@ -55,11 +40,9 @@ class MovieController extends Controller
 
 	public function update(AddMovieRequest $request, Movie $movie): RedirectResponse
 	{
-		$request->validated();
-
-		$movie->update([
-			'title' => request('title'),
-		]);
+		$movie->setTranslation('title', 'en', $request->title_en);
+		$movie->setTranslation('title', 'ka', $request->title_ka);
+		$movie->save();
 
 		return redirect('movies');
 	}
